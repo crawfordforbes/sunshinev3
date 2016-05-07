@@ -1,20 +1,12 @@
-import {UPDATE_MONTHS} from '../constants/ActionTypes'
+import {UPDATE_VIEW} from '../constants/ActionTypes'
 const initialState = {
-	data: [
-		{
-			title: "item 1"
-		},
-		{
-			title: "item 2"
-		}
-	]
+	view: "contents"
+
 };
 export default (state = initialState, action) => {
 	switch(action.type) {
-		case UPDATE_MONTHS:
-			const updateMonthsState = JSON.parse(JSON.stringify(state));
-			updateMonthsState.loans[action.idx].months = parseInt(action.newMonths)
-			return Object.assign({}, state, updateMonthsState)
+		case UPDATE_VIEW:
+			return Object.assign({}, state, {view: action.view})
 
 
 

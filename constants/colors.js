@@ -1,5 +1,0 @@
-const black = "#404041"
-const darkGrey = "#939598"
-const greg = "#c7c8ca"
-const maroon = "#a32020"
-const orange = "#dc6900"

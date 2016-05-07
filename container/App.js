@@ -8,22 +8,22 @@ import * as OtherActions from '../actions/index'
 
 class App extends Component {
 	render() {
-		const {data, actions} = this.props
+		const {view, actions} = this.props
 		return (
 			<div>
-				<Body data={data} actions={actions} />
+				<Body view={view} actions={actions} />
 			</div>)
 	}
 }
 
 App.propTypes = {
 	actions: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired
+  view: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state) {
 	return {
-		data: state.data
+		view: state.view
 	}
 }
 

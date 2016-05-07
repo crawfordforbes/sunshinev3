@@ -1,34 +1,51 @@
 import React, { Component, PropTypes } from 'react'
-import Header from './Header'
-import Footer from './Footer'
+import Nav from './Nav'
+import Home from './Home'
+import Contents from './Contents'
+import Create from './Create'
 
 class Body extends Component {
   constructor(props, context) {
     super(props, context)
-    
   }
-
+  changeView(e){
+    this.props.actions.updateView(e.target.id)
+  }
+  
   componentDidMount(){
 
   }
 
   render() {
-    let data = this.props.data.map(function(item, idx){
-        return <p key={idx}>{item.title}</p>
-    })
+    let view;
+    switch (this.props.view) {
+      case "home":
+        view = <Home />
+        break;
+      case "contents":
+        view = <Contents />
+        break;
+      case "create":
+        view = <Create />
+        break;
+      default:
+        view = <Home />
+    }
     return (
 			<div>
-				<Header />
-
-          {data}
-				<Footer />
+      <div id="home" onClick={this.changeView.bind(this)}>FAKEBOOK</div>
+				<Nav 
+        changeView={this.changeView.bind(this)} />
+        {view}
+          
+				
 			</div>
     )
   }
 }
 
 Body.propTypes = {
-  data: PropTypes.array.isRequired,
+  view: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 }
 

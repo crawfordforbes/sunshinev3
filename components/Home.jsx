@@ -1,15 +1,17 @@
 import React, {Component, PropTypes} from 'react'
 
-class Footer extends Component {
+class Home extends Component {
 	constructor(props, context) {
 		super(props, context)
+
 	}
 	render() {
 		return(
 			<div>
-			<h3>footer placeholder</h3>
-			</div>)
+				<p>Welcome Home!</p>
+			</div>
+		)
 	}
 }
 
-export default Footer
+export default Home
