@@ -1,14 +1,14 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "fakeBook",
   "version": "0.0.1",
-  "description": "a very simple react and redux boilerplate",
+  "description": "turn the page",
   "main": "index.js",
   "scripts": {
     "test": " ",
     "start": "webpack-dev-server"
   },
   "keywords": [
-    "test"
+    
   ],
   "author": "Crawford Forbes",
   "license": "ISC",
@@ -34,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crawfordforbes/react-redux-boilerplate.git"
+    "url": "git+https://github.com/crawfordforbes/fakeBook.git"
   },
   "bugs": {
-    "url": "https://github.com/crawfordforbes/react-redux-boilerplate/issues"
+    "url": "https://github.com/crawfordforbes/fakeBook/issues"
   },
-  "homepage": "https://github.com/crawfordforbes/react-redux-boilerplate#readme"
+  "homepage": "https://github.com/crawfordforbes/fakeBook#readme"
 }

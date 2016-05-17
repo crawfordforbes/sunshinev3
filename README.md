@@ -1,4 +1,4 @@
-#react-redux boilerplate
+#fakeBook
 
 ```
 npm install

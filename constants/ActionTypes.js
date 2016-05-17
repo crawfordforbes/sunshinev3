@@ -1,1 +1,1 @@
-export const UPDATE_MONTHS = 'UPDATE_MONTHS'
+export const UPDATE_VIEW = 'UPDATE_VIEW'

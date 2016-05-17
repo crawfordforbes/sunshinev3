@@ -1,15 +1,17 @@
 import React, {Component, PropTypes} from 'react'
 
-class Header extends Component {
+class Create extends Component {
 	constructor(props, context) {
 		super(props, context)
+
 	}
 	render() {
 		return(
 			<div>
-			<h3>header placeholder</h3>
-			</div>)
+				<p>Welcome Create!</p>
+			</div>
+		)
 	}
 }
 
-export default Header
+export default Create
