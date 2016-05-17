@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 
-class Contents extends Component {
+class ViewTwo extends Component {
 	constructor(props, context) {
 		super(props, context)
 
@@ -8,10 +8,10 @@ class Contents extends Component {
 	render() {
 		return(
 			<div>
-				<p>Welcome Contents!</p>
+				<p>ViewTwo.jsx</p>
 			</div>
 		)
 	}
 }
 
-export default Contents
+export default ViewTwo

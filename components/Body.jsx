@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Nav from './Nav'
 import Home from './Home'
-import Contents from './Contents'
-import Create from './Create'
+import ViewOne from './ViewOne'
+import ViewTwo from './ViewTwo'
 
 class Body extends Component {
   constructor(props, context) {
@@ -22,18 +22,18 @@ class Body extends Component {
       case "home":
         view = <Home />
         break;
-      case "contents":
-        view = <Contents />
+      case "viewOne":
+        view = <ViewOne />
         break;
-      case "create":
-        view = <Create />
+      case "viewTwo":
+        view = <ViewTwo />
         break;
       default:
         view = <Home />
     }
     return (
 			<div>
-      <div id="home" onClick={this.changeView.bind(this)}>FAKEBOOK</div>
+      <div id="home" onClick={this.changeView.bind(this)}>Table of Contents</div>
 				<Nav 
         changeView={this.changeView.bind(this)} />
         {view}

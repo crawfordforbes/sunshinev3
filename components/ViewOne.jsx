@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 
-class Create extends Component {
+class ViewOne extends Component {
 	constructor(props, context) {
 		super(props, context)
 
@@ -8,10 +8,10 @@ class Create extends Component {
 	render() {
 		return(
 			<div>
-				<p>Welcome Create!</p>
+				<p>ViewOne.jsx</p>
 			</div>
 		)
 	}
 }
 
-export default Create
+export default ViewOne

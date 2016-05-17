@@ -10,8 +10,8 @@ class Nav extends Component {
 		return(
 			<div>
 				<ul className="nav">
-					<li id="contents" onClick={this.props.changeView.bind(this)}>Table of Contents</li>
-					<li id="create" onClick={this.props.changeView.bind(this)}>Add a new song</li>
+					<li id="viewOne" onClick={this.props.changeView.bind(this)}>ViewOne</li>
+					<li id="viewTwo" onClick={this.props.changeView.bind(this)}>ViewTwo</li>
 				</ul>
 			</div>
 		)

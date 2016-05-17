@@ -1,6 +1,6 @@
 import {UPDATE_VIEW} from '../constants/ActionTypes'
 const initialState = {
-	view: "contents"
+	view: "home"
 
 };
 export default (state = initialState, action) => {
