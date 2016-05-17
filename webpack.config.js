@@ -1,8 +1,12 @@
 var path = require("path");
+// require("./styles/app.less");
 module.exports = {
-  entry: './index.js',
+  entry: [
+    './index.js',
+    './assets/styles/app.less'
+    ],
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "public"),
     publicPath: "/",
     filename: "bundle.js"
   },
@@ -15,6 +19,10 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.less?/,
+        loader: "style!css!autoprefixer!less"
       }
     ]
   },
