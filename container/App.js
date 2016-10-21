@@ -5,25 +5,80 @@ import { bindActionCreators } from 'redux'
 import store from '../store'
 import Body from '../components/Body'
 import * as OtherActions from '../actions/index'
-
+import $ from 'jquery'
 class App extends Component {
-	render() {
-		const {view, actions} = this.props
+	constructor(props, context) {
+    super(props, context)
+    this.state = {pics: [], posts: []}
+  }
+	componentDidMount(){
+    let pics;
+    let posts = [];
+    let that = this
+    $.get("http://localhost:4567/news", function(news){
+      news.forEach(function(post){
+        posts.push(post)
+      })
+      console.log("news")
+      $.get("http://localhost:4567/shows", function(shows){
+        shows.forEach(function(post){
+          posts.push(post)
+        })
+        console.log("shows")
+        $.get("http://localhost:4567/press", function(press){
+          press.forEach(function(post){
+            posts.push(post)
+          })
+          console.log("press")
+          $.get("http://localhost:4567/videos", function(videos){
+            videos.forEach(function(post){
+              posts.push(post)
+            })
+            console.log("videos")
+            $.get("http://localhost:4567/contact", function(contact){
+              contact.forEach(function(post){
+                posts.push(post)
+              })
+              console.log("contact")
+              $.get("http://localhost:4567/pics", function(data){
+                pics = data
+                console.log("pics")
+                that.stateSetter({pics: pics, posts: posts})
+                //that.setState({pics: pics, posts: posts})
+              })
+            })
+          })
+        })
+      })
+    })
+
+    return true
+  }
+  stateSetter(obj){
+    this.setState(obj)
+  }
+	render() {let content;
+		if(this.state.posts.length < 1){
+			content = "loading..."
+		} else {
+			content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+		}
+		// const {data, actions} = this.props
 		return (
 			<div>
-				<Body view={view} actions={actions} />
+				{content}
 			</div>)
 	}
 }
 
 App.propTypes = {
 	actions: PropTypes.object.isRequired,
-  view: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
 	return {
-		view: state.view
+		data: state
 	}
 }
 

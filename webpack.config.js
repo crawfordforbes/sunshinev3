@@ -6,7 +6,7 @@ module.exports = {
     './assets/styles/app.less'
     ],
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "server/public"),
     publicPath: "/",
     filename: "bundle.js"
   },
