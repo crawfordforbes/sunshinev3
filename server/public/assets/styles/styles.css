@@ -44,7 +44,7 @@
 		}
 		.player {
 			position: fixed;
-			top: 15px;
+			top: 340px;
 			left: 15px;
 			width: 25%;
 			height: 300px;
@@ -89,9 +89,8 @@ h3 {
 
 
 h1 {
-  font-family: 'Tangerine', cursive;
-  font-size: 120px;
-  color: red;
+  font-size: 40px;
+ 	text-align: center;
 }
 
 #bandcamp {
@@ -102,10 +101,10 @@ h1 {
   border-radius: 5px;
 }
 
-/*#songkick {
+#songkick {
   background-color: red;
   border-radius: 20px;
-}*/
+}
 
 #nav {
   width: 100%;

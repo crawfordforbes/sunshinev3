@@ -1,0 +1,43 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "0.0.2",
+  "description": "A simple boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": " ",
+    "start": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "Crawford Forbes",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "lodash": "^4.9.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "react-router": "^2.8.1",
+    "redux": "^3.0.4",
+    "webpack": "^1.12.6",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.1.21",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "css-loader": "^0.23.1",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crawfordforbes/react-redux-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crawfordforbes/react-redux-boilerplate/issues"
+  },
+  "homepage": "https://github.com/crawfordforbes/react-redux-boilerplate#readme"
+}

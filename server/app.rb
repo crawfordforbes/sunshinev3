@@ -10,21 +10,33 @@ require './lib/connection'
 require 'active_record'
 require 'bcrypt'
 include FileUtils::Verbose
-enable :sessions
+set :sessions, secret: 'ahsjvi'
 set :public_folder, './public'
+
 #landing page for user
 get '/' do
 	puts '/'
-	send_file File.join(settings.public_folder, 'index.html')
+	send_file File.join(settings.public_folder, 'user.html')
 end
-get '/public/bundle.js' do
-	puts 'public'
-	send_file File.join(settings.public_folder, 'bundle.js')
+# get '/admin' do
+# 	puts 'XXX admin'
+# 	send_file File.join(settings.public_folder, 'admin.html')	
+# end
+# get '/public/admin.js' do
+# 	send_file File.join(settings.public_folder, 'admin.js')
+# end
+get '/public/user.js' do
+	send_file File.join(settings.public_folder, 'user.js')
 end
 #press page
+get '/presskit.html' do
+	puts '/presskit.html'
+	send_file File.join(settings.public_folder, 'presskit.html')
+end
+
 get '/press.html' do
 	puts '/press.html'
-	send_file File.join(settings.public_folder, 'press.html')
+	send_file File.join(settings.public_folder, 'presskit.html')
 end
 #respond to ajax for carousel
 get '/pics' do
@@ -80,21 +92,65 @@ get '/contact' do
 	contact.to_json
 end
 
+get '/store' do
+	headers 'Access-Control-Allow-Origin' => '*'
+	headers 'Access-Control-Allow-Methods' => 'GET'	
+	content_type :json
+	store = Post.where("section = ?", "store").reverse_order
+	store.to_json
+end
+
 # does what it says
 def authenticated?
 	session[:valid_user] == true
 end
 
+
+
+
+
+
+
+
+
+
+
+
+# get '/admin' do
+# 	if authenticated?
+# 		pics = Pic.all()
+# 		erb :"admin/admin", locals: {pics: pics}
+# 	else
+# 		redirect '/admin/login'
+# 	end
+# end
+
+
+
+get '/admin' do
+	puts 'XXXXX /admin'
+	if authenticated?
+		puts "XXXXX is authenticated"
+		send_file File.join(settings.public_folder, 'admin.html')
+	else
+		puts "XXXXX is not authenticated"
+		redirect '/admin/login'
+	end	
+end
 # log in
 get '/admin/login' do
-	erb :"admin/login"
+	puts "XXXXXX admin/login"
+	send_file File.join(settings.public_folder, "admin/login.html")
 end
 
 #create a user
 post '/admin/user' do
+	puts "XXXXX admin/user"
 	if params[:password] != params[:pass_confirm]
+		puts "XXXXX pass is wrong"
 		redirect '/admin/login'
 	else
+		puts "XXXXX pass worked"
 		pass = BCrypt::Password.create(params[:password])
 		session[:valid_user] = true
 		User.create(name: params[:name], password_digest: pass)
@@ -104,6 +160,7 @@ end
 
 #actually log in
 post '/admin/session' do
+	puts "XXXXX admin/session"
 	user = User.find_by(name: params[:name])
 	if user
 		if BCrypt::Password.new(user.password_digest) == params[:password]
@@ -123,7 +180,7 @@ get '/admin/pics' do
 	if authenticated?
 		puts "GET ADMIN/PICS"
 		pics = Pic.order(:carousel)
-		erb :"admin/pics", locals: {pics: pics}
+		redirect '/admin'
 	else
 		redirect '/admin/login'
 	end
@@ -142,7 +199,7 @@ post '/admin/pic' do
 		filename = params[:file][:filename].gsub(" ", "_")
 		cp(tempfile.path, "./public/#{filename}")
 		Pic.create(url: filename, carousel: car)
-		redirect '/admin/pics'
+		redirect '/admin'
 	else
 		redirect '/admin/login'
 	end
@@ -227,7 +284,7 @@ put '/admin/post' do
 		puts params
 		post = Post.find_by(id: params[:id].to_i)
 		post.update(title: params[:title], story: params[:story], section: params[:section])
-		redirect '/admin/posts'
+		redirect '/admin'
 	else
 		redirect '/admin/login'
 	end
@@ -240,11 +297,11 @@ post '/admin/post' do
 		if params[:section] == "shows"
 			expire = params[:date] + " 23:59:00"
 			Post.create(title: params[:title], story: params[:story], section: params[:section], eventdate: expire)
-					binding.pry
-			redirect '/admin/posts'
+					
+			redirect '/admin'
 		else params[:section]
 			Post.create(title: params[:title], story: params[:story], section: params[:section])
-			redirect '/admin/posts'
+			redirect '/admin'
 		end
 	else
 		redirect '/admin/login'
@@ -252,12 +309,11 @@ post '/admin/post' do
 end
 
 #archive deleted post, delete post in regular post table
-delete '/admin/post/:id' do
+delete '/admin/post' do
 	if authenticated?
 		post = Post.find_by(id: params[:id])
-		Oldpost.create(title: post.title, story: post.story, section: post.section)
 		post.delete
-		redirect '/admin/posts'
+		redirect '/admin'
 	else
 		redirect '/admin/login'
 	end
@@ -265,7 +321,12 @@ end
 
 delete '/admin/logout' do
 	session[:valid_user] = false
-	redirect '/'
+	redirect '/admin'
+end
+
+get '/admin/logout' do
+	session[:valid_user] = false
+	redirect '/admin'
 end
 
 #landing page for admin
