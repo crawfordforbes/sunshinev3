@@ -21813,7 +21813,7 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					var url = "http://www.104.236.246.211/" + pic.url;
+					var url = "http://104.236.246.211/" + pic.url;
 					return _react2.default.createElement(
 						"div",
 						{ className: "col-xs-3 thumbContainer", key: "pic" + pic.id },

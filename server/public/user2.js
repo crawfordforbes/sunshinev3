@@ -27426,7 +27426,7 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					//let url = "http://www.104.236.246.211/" + pic.url
+					//let url = "http://104.236.246.211/" + pic.url
 					var url = "http://127.0.0.1:4567/" + pic.url;
 					return _react2.default.createElement(
 						"div",
