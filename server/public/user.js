@@ -27136,37 +27136,37 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://localhost:4567/news", function (news) {
+	      _jquery2.default.get("http://104.236.246.211/news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
 	        });
 	        console.log("newsies");
-	        _jquery2.default.get("http://localhost:4567/shows", function (shows) {
+	        _jquery2.default.get("http://104.236.246.211/shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
 	          });
 	          console.log("shows");
-	          _jquery2.default.get("http://localhost:4567/press", function (press) {
+	          _jquery2.default.get("http://104.236.246.211/press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
 	            });
 	            console.log("press");
-	            _jquery2.default.get("http://localhost:4567/videos", function (videos) {
+	            _jquery2.default.get("http://104.236.246.211/videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
 	              });
 	              console.log("videos");
-	              _jquery2.default.get("http://localhost:4567/contact", function (contact) {
+	              _jquery2.default.get("http://104.236.246.211/contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
 	                console.log("contact");
-	                _jquery2.default.get("http://localhost:4567/store", function (store) {
+	                _jquery2.default.get("http://104.236.246.211/store", function (store) {
 	                  store.forEach(function (post) {
 	                    posts.push(post);
 	                  });
 	                  console.log("store");
-	                  _jquery2.default.get("http://localhost:4567/pics", function (data) {
+	                  _jquery2.default.get("http://104.236.246.211/pics", function (data) {
 	                    pics = data;
 	                    console.log("pics");
 	                    that.stateSetter({ pics: pics, posts: posts });
@@ -27468,7 +27468,7 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					var url = "http://www.sunshinenights.com/pics/" + pic.url;
+					var url = "http://www.104.236.246.211/pics/" + pic.url;
 					//let url = "http://127.0.0.1:4567/pics/" + pic.url
 					return _react2.default.createElement(
 						"div",

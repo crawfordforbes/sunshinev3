@@ -16,37 +16,37 @@ class App extends Component {
     let pics;
     let posts = [];
     let that = this
-    $.get("http://localhost:4567/news", function(news){
+    $.get("http://104.236.246.211/news", function(news){
       news.forEach(function(post){
         posts.push(post)
       })
       console.log("newsies")
-      $.get("http://localhost:4567/shows", function(shows){
+      $.get("http://104.236.246.211/shows", function(shows){
         shows.forEach(function(post){
           posts.push(post)
         })
         console.log("shows")
-        $.get("http://localhost:4567/press", function(press){
+        $.get("http://104.236.246.211/press", function(press){
           press.forEach(function(post){
             posts.push(post)
           })
           console.log("press")
-          $.get("http://localhost:4567/videos", function(videos){
+          $.get("http://104.236.246.211/videos", function(videos){
             videos.forEach(function(post){
               posts.push(post)
             })
             console.log("videos")
-            $.get("http://localhost:4567/contact", function(contact){
+            $.get("http://104.236.246.211/contact", function(contact){
               contact.forEach(function(post){
                 posts.push(post)
               })
               console.log("contact")
-              $.get("http://localhost:4567/store", function(store){
+              $.get("http://104.236.246.211/store", function(store){
               store.forEach(function(post){
                 posts.push(post)
               })
               console.log("store")
-	              $.get("http://localhost:4567/pics", function(data){
+	              $.get("http://104.236.246.211/pics", function(data){
 	                pics = data
 	                console.log("pics")
 	                that.stateSetter({pics: pics, posts: posts})
