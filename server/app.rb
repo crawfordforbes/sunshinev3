@@ -197,7 +197,7 @@ post '/admin/pic' do
 		end
 		tempfile = params[:file][:tempfile] 
 		filename = params[:file][:filename].gsub(" ", "_")
-		cp(tempfile.path, "./public/#{filename}")
+		cp(tempfile.path, "./public/pics/#{filename}")
 		Pic.create(url: filename, carousel: car)
 		redirect '/admin'
 	else
@@ -250,7 +250,7 @@ delete '/admin/pic/:id' do
 		pic = Pic.find_by(id: params[:id])
 		filename = pic.url
 		pic.delete
-		File.delete("./public/#{filename}")
+		File.delete("./public/pics/#{filename}")
 		redirect '/admin/pics'
 	else
 		redirect '/admin/login'
