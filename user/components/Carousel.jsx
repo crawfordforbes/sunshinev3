@@ -18,8 +18,8 @@ class Carousel extends Component {
 	columnify(pics){
 		let that = this
 		return pics.map(function(pic){
-			let url = "http://127.0.0.1:4567/pics/" + pic.url
-			//let url = "http://http://127.0.0.1:4567/pics/" + pic.url
+			let url = "http://http://104.236.246.211//pics/" + pic.url
+			//let url = "http://http://http://104.236.246.211//pics/" + pic.url
 			return (
 				<div className="col-xs-3 thumbContainer" key={"pic"+pic.id}>
 					<img className="thumbnail" onClick={that.makeCurrent.bind(that)} src={url} />
