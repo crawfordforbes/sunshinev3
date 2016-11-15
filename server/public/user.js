@@ -27136,39 +27136,39 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://104.236.246.211/news", function (news) {
+	      _jquery2.default.get("http://http://104.236.246.211//news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
 	        });
-	        console.log("newsies");
-	        _jquery2.default.get("http://104.236.246.211/shows", function (shows) {
+
+	        _jquery2.default.get("http://http://104.236.246.211//shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
 	          });
-	          console.log("shows");
-	          _jquery2.default.get("http://104.236.246.211/press", function (press) {
+
+	          _jquery2.default.get("http://http://104.236.246.211//press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
 	            });
-	            console.log("press");
-	            _jquery2.default.get("http://104.236.246.211/videos", function (videos) {
+
+	            _jquery2.default.get("http://http://104.236.246.211//videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
 	              });
-	              console.log("videos");
-	              _jquery2.default.get("http://104.236.246.211/contact", function (contact) {
+
+	              _jquery2.default.get("http://http://104.236.246.211//contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
-	                console.log("contact");
-	                _jquery2.default.get("http://104.236.246.211/store", function (store) {
+
+	                _jquery2.default.get("http://http://104.236.246.211//store", function (store) {
 	                  store.forEach(function (post) {
 	                    posts.push(post);
 	                  });
-	                  console.log("store");
-	                  _jquery2.default.get("http://104.236.246.211/pics", function (data) {
+
+	                  _jquery2.default.get("http://http://104.236.246.211//pics", function (data) {
 	                    pics = data;
-	                    console.log("pics");
+
 	                    that.stateSetter({ pics: pics, posts: posts });
 	                    //that.setState({pics: pics, posts: posts})
 	                  });
@@ -27186,49 +27186,26 @@
 	    value: function stateSetter(obj) {
 	      this.setState(obj);
 	    }
-	  }, {
-	    key: 'toggleLoading',
-	    value: function toggleLoading() {
-	      if (this.state.loading) {
-	        this.setState({ loading: false });
-	      }
-	    }
+	    //  toggleLoading(){
+	    //  	if(this.state.loading){
+	    //  		this.setState({loading: false})
+	    //  	}
+	    //  }
+	    // render() {
+
+	    // 	let content;
+	    // 	if(this.state.loading){
+	    // 		content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
+	    // 	} else if (this.state.posts.length < 1){
+	    // 		content = <p>loading...</p>
+	    // 	} else {
+	    // 		content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+	    // 	}
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
-	      var content = void 0;
-	      if (this.state.loading) {
-	        content = _react2.default.createElement(
-	          'div',
-	          { className: 'overlay', onClick: function onClick() {
-	              return _this2.toggleLoading();
-	            } },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'overlayX' },
-	            'x'
-	          ),
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'overlayLink', href: '#', target: '_blank' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'overlayText' },
-	              'Click here to preorder Sunshine\'s new record A Brooklyn Biography.'
-	            )
-	          )
-	        );
-	      } else if (this.state.posts.length < 1) {
-	        content = _react2.default.createElement(
-	          'p',
-	          null,
-	          'loading...'
-	        );
-	      } else {
-	        content = _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics });
-	      }
+	      //console.log(this)
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27237,7 +27214,7 @@
 	          null,
 	          'Sunshine Nights'
 	        ),
-	        content
+	        _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics })
 	      );
 	    }
 	  }]);
@@ -27305,7 +27282,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props, context));
 
-	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "news" };
+	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "news", loading: true };
 	    return _this;
 	  }
 
@@ -27318,9 +27295,10 @@
 	  }, {
 	    key: 'getContent',
 	    value: function getContent() {
+
 	      //return {__html: this.state.posts[0].title}
-	      var posts = this.state.posts;
-	      var pics = this.state.pics;
+	      var posts = this.props.posts;
+	      var pics = this.props.pics;
 	      var that = this;
 	      var content = [];
 	      if (this.state.section !== "pics") {
@@ -27342,18 +27320,62 @@
 	        return html;
 	      } else {
 	        return _react2.default.createElement(_Carousel2.default, {
-	          pics: this.state.pics });
+	          pics: this.props.pics });
 	      }
 	    }
 	  }, {
 	    key: 'nav',
 	    value: function nav(e) {
-
-	      this.setState({ section: e.target.id });
+	      if (this.state.loading) {
+	        this.setState({ section: e.target.id, loading: false });
+	      } else {
+	        this.setState({ section: e.target.id, loading: false });
+	      }
+	    }
+	  }, {
+	    key: 'toggleLoading',
+	    value: function toggleLoading() {
+	      if (this.state.loading) {
+	        this.setState({ loading: false });
+	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var content = void 0;
+	      if (this.state.loading) {
+	        content = _react2.default.createElement(
+	          'div',
+	          { className: 'overlay', onClick: function onClick() {
+	              return _this2.toggleLoading();
+	            } },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'overlayX' },
+	            'x'
+	          ),
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'overlayLink', href: '#', target: '_blank' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'overlayText' },
+	              'Click here to preorder Sunshine\'s new record A Brooklyn Biography.'
+	            )
+	          )
+	        );
+	      } else if (this.props.posts.length < 1) {
+
+	        content = _react2.default.createElement(
+	          'p',
+	          null,
+	          'loading...'
+	        );
+	      } else {
+	        content = this.getContent();
+	      }
 
 	      return _react2.default.createElement(
 	        'div',
@@ -27401,7 +27423,7 @@
 	            )
 	          )
 	        ),
-	        this.getContent()
+	        content
 	      );
 	    }
 	  }]);
@@ -27468,8 +27490,8 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					var url = "http://104.236.246.211/pics/" + pic.url;
-					//let url = "http://127.0.0.1:4567/pics/" + pic.url
+					var url = "http://http://104.236.246.211//pics/" + pic.url;
+					//let url = "http://http://http://104.236.246.211//pics/" + pic.url
 					return _react2.default.createElement(
 						"div",
 						{ className: "col-xs-3 thumbContainer", key: "pic" + pic.id },
@@ -27486,14 +27508,14 @@
 				var picsTotal = pics.length;
 				var page = this.state.currentPage;
 				var picsOnPage = pics.filter(function (pic) {
-					console.log(pic);
+					//console.log(pic)
 					return pic.carousel > (page - 1) * numPerPage && pic.carousel <= page * numPerPage;
 				});
 
 				// console.log(picsOnPage.slice(0,4))
 				// console.log(picsOnPage.slice(4,8))
 				// console.log(picsOnPage.slice(8))
-				console.log(picsOnPage.length);
+				//console.log(picsOnPage.length)
 				return _react2.default.createElement(
 					"div",
 					{ className: "picRowWrapper" },
@@ -37915,7 +37937,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: 'Special Elite', cursive;\n  background-color: #f5f7f0;\n}\na {\n  text-decoration: none;\n}\na:hover {\n  cursor: pointer;\n}\np {\n  color: #404040;\n}\n.hidden {\n  display: none;\n}\n.bold {\n  font-weight: bold;\n}\n.italic {\n  font-style: italic;\n}\n.left {\n  text-align: left;\n}\n.justify {\n  text-align: justify;\n}\n.center {\n  text-align: center;\n}\n.mainWrapper {\n  position: relative;\n  max-width: 1333px;\n  width: 97%;\n  margin: auto;\n}\n.bg-wrapper {\n  z-index: -1;\n  position: fixed;\n  top: -300px;\n  left: -278px;\n}\n.bg {\n  z-index: -1;\n  position: fixed;\n  width: 1333px;\n  top: -80px;\n  left: -123px;\n}\n@media (max-width: 1750px) {\n  .bg {\n    left: -255px;\n  }\n}\n.content {\n  padding: 10px;\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 25px;\n  width: 100%;\n  max-width: 790px;\n  min-width: 300px;\n  background-color: rgba(245, 247, 240, 0.65);\n  border: 5px solid rgba(245, 247, 240, 0.15);\n  border-radius: 10px;\n}\n#react {\n  width: 100%;\n}\n.playerWrapper {\n  height: 130px;\n  vertical-align: top;\n  margin-top: 25px;\n  display: inline-block;\n  width: 25%;\n  max-width: 350px;\n  min-width: 200px;\n  background-color: rgba(245, 247, 240, 0.65);\n}\n@media (min-width: 1340px) {\n  .playerWrapper:hover {\n    height: 430px;\n  }\n}\n#songkick {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 25px;\n  background-color: rgba(245, 247, 240, 0.65);\n  border: 5px solid rgba(245, 247, 240, 0.15);\n  border-radius: 10px;\n  width: 170px;\n}\n#songkickBorder {\n  border: 1px solid #404041;\n  border-radius: 5px;\n}\n#follow_links2 {\n  display: none;\n}\n#email_div2 {\n  display: none;\n}\n@media (max-width: 1340px) {\n  #songkick {\n    position: absolute;\n    left: 0;\n    top: 460px;\n  }\n  .playerWrapper {\n    height: 430px;\n    width: 250px;\n  }\n  .content {\n    position: absolute;\n    max-width: 75%;\n    margin-left: 15px;\n  }\n  #follow_links p {\n    margin: 10px 8px;\n  }\n  .bg {\n    left: -28px;\n  }\n}\n@media (max-width: 1050px) {\n  .content {\n    max-width: 70%;\n  }\n}\n@media (max-width: 850px) {\n  #songkick {\n    position: absolute;\n    left: 0;\n    top: 160px;\n  }\n  .playerWrapper {\n    height: 130px;\n    width: 220px;\n  }\n  .content {\n    position: absolute;\n    max-width: 75%;\n  }\n}\n@media (max-width: 800px) {\n  #songkick {\n    position: initial;\n    text-align: center;\n    width: 100%;\n  }\n  #songkickBorder {\n    border: none;\n  }\n  .playerWrapper {\n    height: 96px;\n    width: 200px;\n  }\n  .content {\n    display: block;\n    position: initial;\n    max-width: 100%;\n    margin: 5px auto 15px;\n  }\n  #follow_links {\n    display: none;\n  }\n  #follow_links2 {\n    display: initial;\n    position: absolute;\n    right: 0;\n    top: 25px;\n    width: 235px;\n  }\n  #follow_links2 img {\n    width: 40px;\n    margin-left: 0;\n    margin-right: 15px;\n  }\n  #email_div {\n    display: none;\n  }\n  #email_div2 {\n    display: initial;\n    position: absolute;\n    top: 70px;\n    right: 0;\n    width: 235px;\n  }\n  label {\n    font-size: 14px;\n  }\n}\n@media (max-width: 700px) {\n  .bg {\n    left: -180px;\n  }\n}\n@media (max-width: 700px) {\n  .bg {\n    left: -285px;\n  }\n}\n@media (max-width: 500px) {\n  #follow_links {\n    display: initial;\n  }\n  #follow_links2 {\n    display: none;\n  }\n  #email_div {\n    display: initial;\n  }\n  #email_div2 {\n    display: none;\n  }\n  .playerWrapper {\n    width: 95%;\n    margin: auto;\n  }\n}\n* {\n  box-sizing: border-box;\n  margin: 0px;\n  padding: 0px;\n}\n.postWrapper {\n  width: 95%;\n}\n#react h3 {\n  font-size: 34px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#react p {\n  margin-left: 15px;\n  margin-bottom: 15px;\n}\nh1 {\n  font-size: 64px;\n  text-align: center;\n  border-bottom: 1px solid red;\n}\n#bandcamp {\n  margin: 10px;\n  border: 0;\n  width: 250px;\n  height: 120px;\n  border-radius: 5px;\n}\n#nav {\n  margin: 25px auto;\n  width: 100%;\n  text-align: center;\n  font-size: 32px;\n}\n#nav li {\n  margin: 5px;\n  padding: 0 5px 5px 5px;\n  display: inline-block;\n  list-style: none;\n  text-align: center;\n}\n.top_nav:hover {\n  cursor: pointer;\n}\n#email_div {\n  margin: 30px 0 10px 5px;\n}\n#follow_links {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#follow_links img,\n#follow_links2 img {\n  border-radius: 3px;\n  width: 30px;\n  height: auto;\n  margin-left: 5px;\n}\n.thumb {\n  width: 100px;\n  height: auto;\n}\n#content {\n  font-size: 20px;\n  /*    border: 5px #333333 solid;*/\n  background-color: white;\n  border-radius: 20px;\n  color: black;\n}\n#content h3 {\n  display: block;\n  font-size: 36px;\n  border-bottom: 1px red solid;\n  margin: 40px auto 8px auto;\n  padding: 5px;\n}\n#content p {\n  padding: 5px;\n}\n#pic_wrapper {\n  border-radius: 5px;\n  height: 100%;\n}\n.picRow {\n  height: 150px;\n  margin-bottom: 10px;\n}\n.thumbnail {\n  max-width: 100%;\n  min-width: 120px;\n  max-height: 150px;\n  min-height: 100px;\n  margin: auto;\n}\n#currentImage {\n  max-height: 400px;\n  margin: auto;\n  display: block;\n  border-radius: 3px;\n}\n.carouselNav:hover {\n  cursor: pointer;\n}\n@media (max-width: 670px) {\n  #nav li {\n    width: 140px;\n    display: inline-block;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: border 0.2s ease-in-out;\n  transition: border 0.2s ease-in-out;\n}\nimg {\n  vertical-align: middle;\n}\n.col-xs-3 {\n  width: 25%;\n  float: left;\n  position: relative;\n  min-height: 1px;\n  padding-right: 15px;\n  padding-left: 15px;\n}\n.row {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n.overlay {\n  max-width: 900px;\n  min-width: 300px;\n  padding: 10px;\n  height: 375px;\n}\n.overlayX {\n  position: relative;\n  top: 70px;\n  left: -70px;\n  float: right;\n  border: 1px solid black;\n  width: 25px;\n  /* padding: 5px; */\n  text-align: center;\n  padding-top: 3px;\n  height: 25px;\n  border-radius: 3px;\n  cursor: pointer;\n  /* border-top-right-radius: 8px; */\n  /* border-bottom-right-radius: 5px; */\n  /* border-top-left-radius: 7px; */\n  /* border-bottom-left-radius: 9px; */\n}\n.overlayLink {\n  position: relative;\n  top: 120px;\n  font-size: 24px;\n}\n.overlayText {\n  height: 110px;\n  padding: 30px;\n}\n.carouselNav {\n  vertical-align: top;\n}\n.carouselNavRow {\n  vertical-align: top;\n  height: 50px;\n}\n.picRowWrapper {\n  height: 400px;\n}\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #f5f7f0;\n}\na {\n  text-decoration: none;\n}\na:hover {\n  cursor: pointer;\n}\np {\n  color: #404040;\n}\n.hidden {\n  display: none;\n}\n.bold {\n  font-weight: bold;\n}\n.italic {\n  font-style: italic;\n}\n.left {\n  text-align: left;\n}\n.justify {\n  text-align: justify;\n}\n.center {\n  text-align: center;\n}\n.mainWrapper {\n  position: relative;\n  max-width: 1333px;\n  width: 97%;\n  margin: auto;\n}\n.bg-wrapper {\n  z-index: -1;\n  position: fixed;\n  top: -300px;\n  left: -278px;\n}\n.bg {\n  z-index: -1;\n  position: fixed;\n  width: 1333px;\n  top: -80px;\n  left: -123px;\n}\n@media (max-width: 1750px) {\n  .bg {\n    left: -255px;\n  }\n}\n.content {\n  padding: 10px;\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 25px;\n  width: 100%;\n  max-width: 790px;\n  min-width: 300px;\n  background-color: rgba(245, 247, 240, 0.65);\n  border: 5px solid rgba(245, 247, 240, 0.15);\n  border-radius: 10px;\n}\n#react {\n  width: 100%;\n}\n.playerWrapper {\n  height: 130px;\n  vertical-align: top;\n  margin-top: 25px;\n  display: inline-block;\n  width: 25%;\n  max-width: 350px;\n  min-width: 200px;\n  background-color: rgba(245, 247, 240, 0.65);\n}\n@media (min-width: 1340px) {\n  .playerWrapper:hover {\n    height: 430px;\n  }\n}\n#songkick {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 25px;\n  background-color: rgba(245, 247, 240, 0.65);\n  border: 5px solid rgba(245, 247, 240, 0.15);\n  border-radius: 10px;\n  width: 170px;\n}\n#songkickBorder {\n  border: 1px solid #404041;\n  border-radius: 5px;\n  background-color: gainsboro;\n}\n#follow_links2 {\n  display: none;\n}\n#email_div2 {\n  display: none;\n}\n@media (max-width: 1340px) {\n  #songkick {\n    position: absolute;\n    left: 0;\n    top: 460px;\n  }\n  .playerWrapper {\n    height: 430px;\n    width: 250px;\n  }\n  .content {\n    position: absolute;\n    max-width: 75%;\n    margin-left: 15px;\n  }\n  #follow_links p {\n    margin: 10px 8px;\n  }\n  .bg {\n    left: -28px;\n  }\n}\n@media (max-width: 1050px) {\n  .content {\n    max-width: 70%;\n  }\n}\n@media (max-width: 850px) {\n  #songkick {\n    position: absolute;\n    left: 0;\n    top: 160px;\n  }\n  .playerWrapper {\n    height: 130px;\n    width: 220px;\n  }\n  .content {\n    position: absolute;\n    max-width: 75%;\n  }\n}\n@media (max-width: 800px) {\n  #songkick {\n    position: initial;\n    text-align: center;\n    width: 100%;\n  }\n  #songkickBorder {\n    border: none;\n  }\n  .playerWrapper {\n    height: 96px;\n    width: 200px;\n  }\n  .content {\n    display: block;\n    position: initial;\n    max-width: 100%;\n    margin: 5px auto 15px;\n  }\n  #follow_links {\n    display: none;\n  }\n  #follow_links2 {\n    display: initial;\n    position: absolute;\n    right: 0;\n    top: 25px;\n    width: 235px;\n  }\n  #follow_links2 img {\n    width: 40px;\n    margin-left: 0;\n    margin-right: 15px;\n  }\n  #email_div {\n    display: none;\n  }\n  #email_div2 {\n    display: initial;\n    position: absolute;\n    top: 70px;\n    right: 0;\n    width: 235px;\n  }\n  label {\n    font-size: 14px;\n  }\n}\n@media (max-width: 700px) {\n  .bg {\n    left: -180px;\n  }\n}\n@media (max-width: 700px) {\n  .bg {\n    left: -285px;\n  }\n}\n@media (max-width: 500px) {\n  #follow_links {\n    display: initial;\n  }\n  #follow_links2 {\n    display: none;\n  }\n  #email_div {\n    display: initial;\n  }\n  #email_div2 {\n    display: none;\n  }\n  .playerWrapper {\n    width: 95%;\n    margin: auto;\n  }\n}\n* {\n  box-sizing: border-box;\n  margin: 0px;\n  padding: 0px;\n}\n.postWrapper {\n  width: 95%;\n}\n#react h3 {\n  font-size: 34px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#react p {\n  margin-left: 15px;\n  margin-bottom: 15px;\n}\nh1 {\n  font-size: 64px;\n  text-align: center;\n  border-bottom: 1px solid red;\n}\n#bandcamp {\n  margin: 10px;\n  border: 0;\n  width: 250px;\n  height: 120px;\n  border-radius: 5px;\n}\n#nav {\n  margin: 25px auto;\n  width: 100%;\n  text-align: center;\n  font-size: 32px;\n}\n#nav li {\n  margin: 5px;\n  padding: 0 5px 5px 5px;\n  display: inline-block;\n  list-style: none;\n  text-align: center;\n}\n.top_nav:hover {\n  cursor: pointer;\n}\n#email_div {\n  margin: 30px 0 10px 5px;\n}\n#follow_links {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n#follow_links img,\n#follow_links2 img {\n  border-radius: 3px;\n  width: 30px;\n  height: auto;\n  margin-left: 5px;\n}\n.thumb {\n  width: 100px;\n  height: auto;\n}\n#content {\n  font-size: 20px;\n  /*    border: 5px #333333 solid;*/\n  background-color: white;\n  border-radius: 20px;\n  color: black;\n}\n#content h3 {\n  display: block;\n  font-size: 36px;\n  border-bottom: 1px red solid;\n  margin: 40px auto 8px auto;\n  padding: 5px;\n}\n#content p {\n  padding: 5px;\n}\n#pic_wrapper {\n  border-radius: 5px;\n  height: 100%;\n}\n.picRow {\n  height: 150px;\n  margin-bottom: 10px;\n}\n.thumbnail {\n  max-width: 100%;\n  min-width: 120px;\n  max-height: 150px;\n  min-height: 100px;\n  margin: auto;\n}\n#currentImage {\n  max-height: 400px;\n  margin: auto;\n  display: block;\n  border-radius: 3px;\n}\n.carouselNav:hover {\n  cursor: pointer;\n}\n@media (max-width: 670px) {\n  #nav li {\n    width: 140px;\n    display: inline-block;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: border 0.2s ease-in-out;\n  transition: border 0.2s ease-in-out;\n}\nimg {\n  vertical-align: middle;\n}\n.col-xs-3 {\n  width: 25%;\n  float: left;\n  position: relative;\n  min-height: 1px;\n  padding-right: 15px;\n  padding-left: 15px;\n}\n.row {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n.overlay {\n  max-width: 900px;\n  min-width: 300px;\n  padding: 10px;\n  height: 375px;\n}\n.overlayX {\n  position: relative;\n  top: 0;\n  left: -30px;\n  float: right;\n  border: 1px solid black;\n  width: 25px;\n  /* padding: 5px; */\n  text-align: center;\n  padding-top: 3px;\n  height: 25px;\n  border-radius: 3px;\n  cursor: pointer;\n  /* border-top-right-radius: 8px; */\n  /* border-bottom-right-radius: 5px; */\n  /* border-top-left-radius: 7px; */\n  /* border-bottom-left-radius: 9px; */\n}\n.overlayLink {\n  position: relative;\n  top: 40px;\n  font-size: 24px;\n}\n.overlayText {\n  height: 110px;\n  padding: 30px;\n}\n.carouselNav {\n  vertical-align: top;\n}\n.carouselNavRow {\n  vertical-align: top;\n  height: 50px;\n}\n.picRowWrapper {\n  height: 400px;\n}\n", ""]);
 
 	// exports
 
