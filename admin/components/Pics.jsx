@@ -43,7 +43,7 @@ let lister = function(pics){
 			html += '<div><p>Page '+ pageBreak + '</p></div>'
 		}
 		
-		html += '<li><a href="http://104.236.246.211//pics/' + pics[i].url +'" target="_blank"><img class="thumb" src="../pics/' + pics[i].url +'"></a><p>http://104.236.246.211//pics/' + pics[i].url +'</p><p>This is currently pic number ' + newCar +' out of '+pics.length+'</p><input id="input'+pics[i].id + '" placeholder="enter order number here">'+moveButton+'</li><form action="/admin/pic/'+pics[i].id + '" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="id" value={pics[i].id} /><button>Delete</button></form> <div style="border-bottom: 1px red dashed; margin-bottom: 5px;"></div>'
+		html += '<li><a href="http://104.236.246.211/pics/' + pics[i].url +'" target="_blank"><img class="thumb" src="../pics/' + pics[i].url +'"></a><p>http://104.236.246.211/pics/' + pics[i].url +'</p><p>This is currently pic number ' + newCar +' out of '+pics.length+'</p><input id="input'+pics[i].id + '" placeholder="enter order number here">'+moveButton+'</li><form action="/admin/pic/'+pics[i].id + '" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="id" value={pics[i].id} /><button>Delete</button></form> <div style="border-bottom: 1px red dashed; margin-bottom: 5px;"></div>'
 	}
 	html += ''
 	$("#js").html(html)
