@@ -18,8 +18,8 @@ class Carousel extends Component {
 	columnify(pics){
 		let that = this
 		return pics.map(function(pic){
-			let url = "http://104.236.246.211/pics/" + pic.url
-			//let url = "http://127.0.0.1:4567/pics/" + pic.url
+			let url = "http://127.0.0.1:4567/pics/" + pic.url
+			//let url = "http://http://127.0.0.1:4567/pics/" + pic.url
 			return (
 				<div className="col-xs-3 thumbContainer" key={"pic"+pic.id}>
 					<img className="thumbnail" onClick={that.makeCurrent.bind(that)} src={url} />
@@ -35,14 +35,14 @@ class Carousel extends Component {
 		let picsTotal = pics.length;
 		let page = this.state.currentPage;
 		let picsOnPage = pics.filter(function(pic){
-			console.log(pic)
+			//console.log(pic)
 			return pic.carousel > (page - 1) * numPerPage && pic.carousel <= page * numPerPage
 		})
 		
 		// console.log(picsOnPage.slice(0,4))
 		// console.log(picsOnPage.slice(4,8))
 		// console.log(picsOnPage.slice(8))
-		console.log(picsOnPage.length)
+		//console.log(picsOnPage.length)
 		return (
 			<div className="picRowWrapper">
 				<div className="row picRow">

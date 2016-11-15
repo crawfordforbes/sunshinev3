@@ -6,7 +6,7 @@ import $ from 'jquery'
 class Body extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = {pics: this.props.pics, posts: this.props.posts, section: "news"}
+    this.state = {pics: this.props.pics, posts: this.props.posts, section: "news", loading: true}
   }
   htmlify(string){
 
@@ -14,9 +14,10 @@ class Body extends Component {
   }
 
   getContent(){
+
     //return {__html: this.state.posts[0].title}
-    let posts = this.state.posts
-    let pics = this.state.pics
+    let posts = this.props.posts
+    let pics = this.props.pics
     let that = this
     let content = [];
     if(this.state.section !== "pics"){
@@ -36,15 +37,33 @@ class Body extends Component {
       return html
     } else {
       return <Carousel
-        pics={this.state.pics} />
+        pics={this.props.pics} />
     }
   }
   nav(e){
-    
-    this.setState({section: e.target.id})
+    if(this.state.loading){
+    	this.setState({section: e.target.id, loading: false})
+  	} else {
+  		this.setState({section: e.target.id, loading: false})
+  	}
 
   }
-  render() {
+   toggleLoading(){
+  	if(this.state.loading){
+  		this.setState({loading: false})
+  	}
+  }
+	render() {
+
+		let content;
+		if(this.state.loading){
+			content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
+		} else if (this.props.posts.length < 1){
+			
+			content = <p>loading...</p>
+		} else {
+			content = this.getContent()
+		}
 
     return (
      <div>
@@ -60,7 +79,7 @@ class Body extends Component {
      </ul>
      </div>
 
-     {this.getContent()}
+     {content}
 
      </div>
      )

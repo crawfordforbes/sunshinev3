@@ -16,39 +16,39 @@ class App extends Component {
     let pics;
     let posts = [];
     let that = this
-    $.get("http://104.236.246.211/news", function(news){
+    $.get("http://127.0.0.1:4567/news", function(news){
       news.forEach(function(post){
         posts.push(post)
       })
-      console.log("newsies")
-      $.get("http://104.236.246.211/shows", function(shows){
+      
+      $.get("http://127.0.0.1:4567/shows", function(shows){
         shows.forEach(function(post){
           posts.push(post)
         })
-        console.log("shows")
-        $.get("http://104.236.246.211/press", function(press){
+        
+        $.get("http://127.0.0.1:4567/press", function(press){
           press.forEach(function(post){
             posts.push(post)
           })
-          console.log("press")
-          $.get("http://104.236.246.211/videos", function(videos){
+          
+          $.get("http://127.0.0.1:4567/videos", function(videos){
             videos.forEach(function(post){
               posts.push(post)
             })
-            console.log("videos")
-            $.get("http://104.236.246.211/contact", function(contact){
+            
+            $.get("http://127.0.0.1:4567/contact", function(contact){
               contact.forEach(function(post){
                 posts.push(post)
               })
-              console.log("contact")
-              $.get("http://104.236.246.211/store", function(store){
+              
+              $.get("http://127.0.0.1:4567/store", function(store){
               store.forEach(function(post){
                 posts.push(post)
               })
-              console.log("store")
-	              $.get("http://104.236.246.211/pics", function(data){
+              
+	              $.get("http://127.0.0.1:4567/pics", function(data){
 	                pics = data
-	                console.log("pics")
+	                
 	                that.stateSetter({pics: pics, posts: posts})
 	                //that.setState({pics: pics, posts: posts})
 	              })
@@ -64,25 +64,27 @@ class App extends Component {
   stateSetter(obj){
     this.setState(obj)
   }
-  toggleLoading(){
-  	if(this.state.loading){
-  		this.setState({loading: false})
-  	}
-  }
-	render() {
+ //  toggleLoading(){
+ //  	if(this.state.loading){
+ //  		this.setState({loading: false})
+ //  	}
+ //  }
+	// render() {
 
-		let content;
-		if(this.state.loading){
-			content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
-		} else if (this.state.posts.length < 1){
-			content = <p>loading...</p>
-		} else {
-			content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
-		}
+	// 	let content;
+	// 	if(this.state.loading){
+	// 		content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
+	// 	} else if (this.state.posts.length < 1){
+	// 		content = <p>loading...</p>
+	// 	} else {
+	// 		content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+	// 	}
+	render() {
+		//console.log(this)
 		return (
 			<div>
 			<h1>Sunshine Nights</h1>
-				{content}
+				<Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
 			</div>)
 	}
 }
