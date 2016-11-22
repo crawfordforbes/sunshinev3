@@ -27358,7 +27358,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'overlayLink', href: '#', target: '_blank' },
+	            { className: 'overlayLink', href: 'https://sunshinenights.bandcamp.com/album/a-brooklyn-biograghy?action=buy&from=embed', target: '_blank' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'overlayText' },
