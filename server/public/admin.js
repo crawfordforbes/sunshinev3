@@ -21479,32 +21479,32 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://104.236.246.211/news", function (news) {
+	      _jquery2.default.get("http://sunshinenights.com/news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
 	        });
 	        console.log("news");
-	        _jquery2.default.get("http://104.236.246.211/shows", function (shows) {
+	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
 	          });
 	          console.log("shows");
-	          _jquery2.default.get("http://104.236.246.211/press", function (press) {
+	          _jquery2.default.get("http://sunshinenights.com/press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
 	            });
 	            console.log("press");
-	            _jquery2.default.get("http://104.236.246.211/videos", function (videos) {
+	            _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
 	              });
 	              console.log("videos");
-	              _jquery2.default.get("http://104.236.246.211/contact", function (contact) {
+	              _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
 	                console.log("contact");
-	                _jquery2.default.get("http://104.236.246.211/pics", function (data) {
+	                _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
 	                  pics = data;
 	                  console.log("pics");
 	                  that.stateSetter({ pics: pics, posts: posts });
@@ -21736,7 +21736,7 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					var url = "http://104.236.246.211/" + pic.url;
+					var url = "http://sunshinenights.com/" + pic.url;
 					return _react2.default.createElement(
 						"div",
 						{ className: "col-xs-3 thumbContainer", key: "pic" + pic.id },
@@ -22275,7 +22275,7 @@
 							html += '<div><p>Page ' + pageBreak + '</p></div>';
 						}
 
-						html += '<li><a href="http://104.236.246.211/pics/' + pics[i].url + '" target="_blank"><img class="thumb" src="../pics/' + pics[i].url + '"></a><p>http://104.236.246.211/pics/' + pics[i].url + '</p><p>This is currently pic number ' + newCar + ' out of ' + pics.length + '</p><input id="input' + pics[i].id + '" placeholder="enter order number here">' + moveButton + '</li><form action="/admin/pic/' + pics[i].id + '" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="id" value={pics[i].id} /><button>Delete</button></form> <div style="border-bottom: 1px red dashed; margin-bottom: 5px;"></div>';
+						html += '<li><a href="http://sunshinenights.com/pics/' + pics[i].url + '" target="_blank"><img class="thumb" src="../pics/' + pics[i].url + '"></a><p>http://sunshinenights.com/pics/' + pics[i].url + '</p><p>This is currently pic number ' + newCar + ' out of ' + pics.length + '</p><input id="input' + pics[i].id + '" placeholder="enter order number here">' + moveButton + '</li><form action="/admin/pic/' + pics[i].id + '" method="POST"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="id" value={pics[i].id} /><button>Delete</button></form> <div style="border-bottom: 1px red dashed; margin-bottom: 5px;"></div>';
 					}
 					html += '';
 					(0, _jquery2.default)("#js").html(html);

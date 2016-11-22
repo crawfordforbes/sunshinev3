@@ -27136,37 +27136,37 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://104.236.246.211/news", function (news) {
+	      _jquery2.default.get("http://sunshinenights.com/news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
 	        });
 
-	        _jquery2.default.get("http://104.236.246.211/shows", function (shows) {
+	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
 	          });
 
-	          _jquery2.default.get("http://104.236.246.211/press", function (press) {
+	          _jquery2.default.get("http://sunshinenights.com/press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
 	            });
 
-	            _jquery2.default.get("http://104.236.246.211/videos", function (videos) {
+	            _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
 	              });
 
-	              _jquery2.default.get("http://104.236.246.211/contact", function (contact) {
+	              _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
 
-	                _jquery2.default.get("http://104.236.246.211/store", function (store) {
+	                _jquery2.default.get("http://sunshinenights.com/store", function (store) {
 	                  store.forEach(function (post) {
 	                    posts.push(post);
 	                  });
 
-	                  _jquery2.default.get("http://104.236.246.211/pics", function (data) {
+	                  _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
 	                    pics = data;
 
 	                    that.stateSetter({ pics: pics, posts: posts });
@@ -27490,8 +27490,8 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					var url = "http://104.236.246.211/pics/" + pic.url;
-					//let url = "http://http://104.236.246.211/pics/" + pic.url
+					var url = "http://sunshinenights.com/pics/" + pic.url;
+					//let url = "http://http://sunshinenights.com/pics/" + pic.url
 					return _react2.default.createElement(
 						"div",
 						{ className: "col-xs-3 thumbContainer", key: "pic" + pic.id },

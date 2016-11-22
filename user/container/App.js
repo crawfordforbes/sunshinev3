@@ -16,37 +16,37 @@ class App extends Component {
     let pics;
     let posts = [];
     let that = this
-    $.get("http://104.236.246.211/news", function(news){
+    $.get("http://sunshinenights.com/news", function(news){
       news.forEach(function(post){
         posts.push(post)
       })
       
-      $.get("http://104.236.246.211/shows", function(shows){
+      $.get("http://sunshinenights.com/shows", function(shows){
         shows.forEach(function(post){
           posts.push(post)
         })
         
-        $.get("http://104.236.246.211/press", function(press){
+        $.get("http://sunshinenights.com/press", function(press){
           press.forEach(function(post){
             posts.push(post)
           })
           
-          $.get("http://104.236.246.211/videos", function(videos){
+          $.get("http://sunshinenights.com/videos", function(videos){
             videos.forEach(function(post){
               posts.push(post)
             })
             
-            $.get("http://104.236.246.211/contact", function(contact){
+            $.get("http://sunshinenights.com/contact", function(contact){
               contact.forEach(function(post){
                 posts.push(post)
               })
               
-              $.get("http://104.236.246.211/store", function(store){
+              $.get("http://sunshinenights.com/store", function(store){
               store.forEach(function(post){
                 posts.push(post)
               })
               
-	              $.get("http://104.236.246.211/pics", function(data){
+	              $.get("http://sunshinenights.com/pics", function(data){
 	                pics = data
 	                
 	                that.stateSetter({pics: pics, posts: posts})
