@@ -27134,32 +27134,32 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://104.236.246.211//news", function (news) {
+	      _jquery2.default.get("http://104.236.246.211/news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
 	        });
 	        console.log("news");
-	        _jquery2.default.get("http://104.236.246.211//shows", function (shows) {
+	        _jquery2.default.get("http://104.236.246.211/shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
 	          });
 	          console.log("shows");
-	          _jquery2.default.get("http://104.236.246.211//press", function (press) {
+	          _jquery2.default.get("http://104.236.246.211/press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
 	            });
 	            console.log("press");
-	            _jquery2.default.get("http://104.236.246.211//videos", function (videos) {
+	            _jquery2.default.get("http://104.236.246.211/videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
 	              });
 	              console.log("videos");
-	              _jquery2.default.get("http://104.236.246.211//contact", function (contact) {
+	              _jquery2.default.get("http://104.236.246.211/contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
 	                console.log("contact");
-	                _jquery2.default.get("http://104.236.246.211//pics", function (data) {
+	                _jquery2.default.get("http://104.236.246.211/pics", function (data) {
 	                  pics = data;
 	                  console.log("pics");
 	                  that.stateSetter({ pics: pics, posts: posts });
@@ -27426,8 +27426,8 @@
 			value: function columnify(pics) {
 				var that = this;
 				return pics.map(function (pic) {
-					//let url = "http://104.236.246.211//" + pic.url
-					var url = "http://http://104.236.246.211//" + pic.url;
+					//let url = "http://104.236.246.211/" + pic.url
+					var url = "http://http://104.236.246.211/" + pic.url;
 					return _react2.default.createElement(
 						"div",
 						{ className: "col-xs-3 thumbContainer", key: "pic" + pic.id },
