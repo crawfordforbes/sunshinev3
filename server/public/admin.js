@@ -21503,12 +21503,18 @@
 	                contact.forEach(function (post) {
 	                  posts.push(post);
 	                });
-	                console.log("contact");
-	                _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
-	                  pics = data;
-	                  console.log("pics");
-	                  that.stateSetter({ pics: pics, posts: posts });
-	                  //that.setState({pics: pics, posts: posts})
+	                _jquery2.default.get("http://sunshinenights.com/store", function (store) {
+	                  store.forEach(function (post) {
+	                    posts.push(post);
+	                    console.log("store");
+	                  });
+	                  console.log("contact");
+	                  _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
+	                    pics = data;
+	                    console.log("pics");
+	                    that.stateSetter({ pics: pics, posts: posts });
+	                    //that.setState({pics: pics, posts: posts})
+	                  });
 	                });
 	              });
 	            });

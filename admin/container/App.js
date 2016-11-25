@@ -39,12 +39,18 @@ class App extends Component {
               contact.forEach(function(post){
                 posts.push(post)
               })
+              $.get("http://sunshinenights.com/store", function(store){
+              store.forEach(function(post){
+                posts.push(post)
+                console.log("store")
+              })
               console.log("contact")
               $.get("http://sunshinenights.com/pics", function(data){
                 pics = data
                 console.log("pics")
                 that.stateSetter({pics: pics, posts: posts})
                 //that.setState({pics: pics, posts: posts})
+              })
               })
             })
           })
