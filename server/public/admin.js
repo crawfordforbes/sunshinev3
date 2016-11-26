@@ -21488,26 +21488,31 @@
 	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
 	          shows.forEach(function (post) {
 	            posts.push(post);
+	            that.stateSetter({ posts: posts });
 	          });
 	          console.log("shows");
 	          _jquery2.default.get("http://sunshinenights.com/press", function (press) {
 	            press.forEach(function (post) {
 	              posts.push(post);
+	              that.stateSetter({ posts: posts });
 	            });
 	            console.log("press");
 	            _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
 	              videos.forEach(function (post) {
 	                posts.push(post);
+	                that.stateSetter({ posts: posts });
 	              });
 	              console.log("videos");
 	              _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
 	                contact.forEach(function (post) {
 	                  posts.push(post);
+	                  that.stateSetter({ posts: posts });
 	                });
 	                _jquery2.default.get("http://sunshinenights.com/store", function (store) {
 	                  store.forEach(function (post) {
 	                    posts.push(post);
 	                    console.log("store");
+	                    that.stateSetter({ posts: posts });
 	                  });
 	                  console.log("contact");
 	                  _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
