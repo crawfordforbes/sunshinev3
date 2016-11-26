@@ -27139,6 +27139,7 @@
 	      _jquery2.default.get("http://sunshinenights.com/news", function (news) {
 	        news.forEach(function (post) {
 	          posts.push(post);
+	          that.stateSetter({ posts: posts });
 	        });
 
 	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {

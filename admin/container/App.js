@@ -18,6 +18,7 @@ class App extends Component {
     $.get("http://sunshinenights.com/news", function(news){
       news.forEach(function(post){
         posts.push(post)
+        that.stateSetter({posts: posts})
       })
       console.log("news")
       $.get("http://sunshinenights.com/shows", function(shows){
