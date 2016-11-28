@@ -27368,7 +27368,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'overlayText' },
-	              'Click here to preorder Sunshine\'s new record A Brooklyn Biography.'
+	              'Click here to purchase Sunshine\'s new record A Brooklyn Biography.'
 	            )
 	          )
 	        );
