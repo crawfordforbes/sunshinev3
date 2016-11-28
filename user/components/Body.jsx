@@ -57,7 +57,7 @@ class Body extends Component {
 
 		let content;
 		if(this.state.loading){
-			content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="https://sunshinenights.bandcamp.com/album/a-brooklyn-biograghy?action=buy&from=embed" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
+			content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="https://sunshinenights.bandcamp.com/album/a-brooklyn-biograghy?action=buy&from=embed" target="_blank"><div className="overlayText">Click here to purchase Sunshine's new record A Brooklyn Biography.</div></a></div>
 		} else if (this.props.posts.length < 1){
 			
 			content = <p>loading...</p>
