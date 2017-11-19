@@ -39,7 +39,7 @@ class Posts extends Component {
   					<textarea name="title" defaultValue={post.title} />
   					<textarea name="story" defaultValue={post.story} />
   					<select name="section" defaultValue={post.section}>
-							<option value="news">News</option>
+						
 							<option value="shows">Shows</option>
 							<option value="press">Press</option>
 							<option value="videos">Videos</option>
@@ -79,7 +79,7 @@ class Posts extends Component {
 				<textarea name="title" placeholder="title, please" required></textarea>
 				<textarea name="story" placeholder="story, please" required></textarea>
 				<select name="section">
-					<option value="news">News</option>
+				
 					<option value="shows">Shows</option>
 					<option value="press">Press</option>
 					<option value="videos">Videos</option>
@@ -90,10 +90,7 @@ class Posts extends Component {
 				<input type="date" name="date"></input>
 					<button>Submit</button>
 			</form>
-			<h3>News</h3>
-			<ul>
-			{this.getPosts("news")}
-			</ul>
+			
 			<h3>Shows</h3>
 			<ul>
 			{this.getPosts("shows")}

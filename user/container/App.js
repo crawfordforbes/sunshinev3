@@ -16,11 +16,11 @@ class App extends Component {
     let pics;
     let posts = [];
     let that = this
-    $.get("http://sunshinenights.com/news", function(news){
-      news.forEach(function(post){
-        posts.push(post)
-        that.stateSetter({posts: posts})
-      })
+    // $.get("http://sunshinenights.com/news", function(news){
+    //   news.forEach(function(post){
+    //     posts.push(post)
+    //     that.stateSetter({posts: posts})
+    //   })
       
       $.get("http://sunshinenights.com/shows", function(shows){
         shows.forEach(function(post){
@@ -55,7 +55,7 @@ class App extends Component {
 	              $.get("http://sunshinenights.com/pics", function(data){
 	                pics = data
 	                
-	                that.stateSetter({pics: pics, posts: posts})
+	                that.stateSetter({pics: pics, posts: posts, loading: false})
 	                //that.setState({pics: pics, posts: posts})
 	              })
 	            })
@@ -63,7 +63,7 @@ class App extends Component {
           })
         })
       })
-    })
+    // })
 
     return true
   }
@@ -90,7 +90,7 @@ class App extends Component {
 		return (
 			<div>
 			<h1>Sunshine Nights</h1>
-				<Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+				<Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics} loading={this.state.loading}/>
 			</div>)
 	}
 }

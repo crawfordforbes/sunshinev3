@@ -6,11 +6,16 @@ import $ from 'jquery'
 class Body extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = {pics: this.props.pics, posts: this.props.posts, section: "news", loading: true}
+    this.state = {pics: this.props.pics, posts: this.props.posts, section: "shows", loading: true}
   }
   htmlify(string){
 
     return {__html: string}
+  }
+  componentDidUpdate(){
+  if(!this.props.loading){
+  	this.setState({loading: false})
+  }
   }
 
   getContent(){
@@ -57,10 +62,10 @@ class Body extends Component {
 
 		let content;
 		if(this.state.loading){
-			content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="https://sunshinenights.bandcamp.com/album/a-brooklyn-biograghy?action=buy&from=embed" target="_blank"><div className="overlayText">Click here to purchase Sunshine's new record A Brooklyn Biography.</div></a></div>
-		} else if (this.props.posts.length < 1){
-			
 			content = <p>loading...</p>
+		// } else if (this.props.posts.length < 1){
+			
+		// 	content = <p>loading...</p>
 		} else {
 			content = this.getContent()
 		}
@@ -69,7 +74,7 @@ class Body extends Component {
      <div>
      <div className="row">
      <ul id="nav">
-     <li className="top_nav" id="news" onClick={this.nav.bind(this)}>news</li>
+     
      <li className="top_nav" id="shows" onClick={this.nav.bind(this)}>shows</li>
      <li className="top_nav" id="pics" onClick={this.nav.bind(this)}>pics</li>
      <li className="top_nav" id="press" onClick={this.nav.bind(this)}>press</li>

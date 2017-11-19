@@ -15,11 +15,11 @@ class App extends Component {
     let pics;
     let posts = [];
     let that = this
-    $.get("http://sunshinenights.com/news", function(news){
-      news.forEach(function(post){
-        posts.push(post)
-        that.stateSetter({posts: posts})
-      })
+    // $.get("http://sunshinenights.com/news", function(news){
+    //   news.forEach(function(post){
+    //     posts.push(post)
+    //     that.stateSetter({posts: posts})
+    //   })
       console.log("news")
       $.get("http://sunshinenights.com/shows", function(shows){
         shows.forEach(function(post){
@@ -62,7 +62,7 @@ class App extends Component {
           })
         })
       })
-    })
+    // })
 
     return true
   }

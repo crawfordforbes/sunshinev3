@@ -21479,54 +21479,54 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://sunshinenights.com/news", function (news) {
-	        news.forEach(function (post) {
+	      // $.get("http://sunshinenights.com/news", function(news){
+	      //   news.forEach(function(post){
+	      //     posts.push(post)
+	      //     that.stateSetter({posts: posts})
+	      //   })
+	      console.log("news");
+	      _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
+	        shows.forEach(function (post) {
 	          posts.push(post);
 	          that.stateSetter({ posts: posts });
 	        });
-	        console.log("news");
-	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
-	          shows.forEach(function (post) {
+	        console.log("shows");
+	        _jquery2.default.get("http://sunshinenights.com/press", function (press) {
+	          press.forEach(function (post) {
 	            posts.push(post);
 	            that.stateSetter({ posts: posts });
 	          });
-	          console.log("shows");
-	          _jquery2.default.get("http://sunshinenights.com/press", function (press) {
-	            press.forEach(function (post) {
+	          console.log("press");
+	          _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
+	            videos.forEach(function (post) {
 	              posts.push(post);
 	              that.stateSetter({ posts: posts });
 	            });
-	            console.log("press");
-	            _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
-	              videos.forEach(function (post) {
+	            console.log("videos");
+	            _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
+	              contact.forEach(function (post) {
 	                posts.push(post);
 	                that.stateSetter({ posts: posts });
 	              });
-	              console.log("videos");
-	              _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
-	                contact.forEach(function (post) {
+	              _jquery2.default.get("http://sunshinenights.com/store", function (store) {
+	                store.forEach(function (post) {
 	                  posts.push(post);
+	                  console.log("store");
 	                  that.stateSetter({ posts: posts });
 	                });
-	                _jquery2.default.get("http://sunshinenights.com/store", function (store) {
-	                  store.forEach(function (post) {
-	                    posts.push(post);
-	                    console.log("store");
-	                    that.stateSetter({ posts: posts });
-	                  });
-	                  console.log("contact");
-	                  _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
-	                    pics = data;
-	                    console.log("pics");
-	                    that.stateSetter({ pics: pics, posts: posts });
-	                    //that.setState({pics: pics, posts: posts})
-	                  });
+	                console.log("contact");
+	                _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
+	                  pics = data;
+	                  console.log("pics");
+	                  that.stateSetter({ pics: pics, posts: posts });
+	                  //that.setState({pics: pics, posts: posts})
 	                });
 	              });
 	            });
 	          });
 	        });
 	      });
+	      // })
 
 	      return true;
 	    }
@@ -22015,11 +22015,6 @@
 	                { name: "section", defaultValue: post.section },
 	                _react2.default.createElement(
 	                  "option",
-	                  { value: "news" },
-	                  "News"
-	                ),
-	                _react2.default.createElement(
-	                  "option",
 	                  { value: "shows" },
 	                  "Shows"
 	                ),
@@ -22105,11 +22100,6 @@
 	            { name: "section" },
 	            _react2.default.createElement(
 	              "option",
-	              { value: "news" },
-	              "News"
-	            ),
-	            _react2.default.createElement(
-	              "option",
 	              { value: "shows" },
 	              "Shows"
 	            ),
@@ -22145,16 +22135,6 @@
 	            null,
 	            "Submit"
 	          )
-	        ),
-	        _react2.default.createElement(
-	          "h3",
-	          null,
-	          "News"
-	        ),
-	        _react2.default.createElement(
-	          "ul",
-	          null,
-	          this.getPosts("news")
 	        ),
 	        _react2.default.createElement(
 	          "h3",

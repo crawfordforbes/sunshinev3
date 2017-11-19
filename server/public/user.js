@@ -27136,54 +27136,54 @@
 	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      _jquery2.default.get("http://sunshinenights.com/news", function (news) {
-	        news.forEach(function (post) {
+	      // $.get("http://sunshinenights.com/news", function(news){
+	      //   news.forEach(function(post){
+	      //     posts.push(post)
+	      //     that.stateSetter({posts: posts})
+	      //   })
+
+	      _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
+	        shows.forEach(function (post) {
 	          posts.push(post);
 	          that.stateSetter({ posts: posts });
 	        });
 
-	        _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
-	          shows.forEach(function (post) {
+	        _jquery2.default.get("http://sunshinenights.com/press", function (press) {
+	          press.forEach(function (post) {
 	            posts.push(post);
 	            that.stateSetter({ posts: posts });
 	          });
 
-	          _jquery2.default.get("http://sunshinenights.com/press", function (press) {
-	            press.forEach(function (post) {
+	          _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
+	            videos.forEach(function (post) {
 	              posts.push(post);
 	              that.stateSetter({ posts: posts });
 	            });
 
-	            _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
-	              videos.forEach(function (post) {
+	            _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
+	              contact.forEach(function (post) {
 	                posts.push(post);
 	                that.stateSetter({ posts: posts });
 	              });
 
-	              _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
-	                contact.forEach(function (post) {
+	              _jquery2.default.get("http://sunshinenights.com/store", function (store) {
+	                store.forEach(function (post) {
 	                  posts.push(post);
 	                  that.stateSetter({ posts: posts });
 	                });
 
-	                _jquery2.default.get("http://sunshinenights.com/store", function (store) {
-	                  store.forEach(function (post) {
-	                    posts.push(post);
-	                    that.stateSetter({ posts: posts });
-	                  });
+	                _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
+	                  pics = data;
 
-	                  _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
-	                    pics = data;
-
-	                    that.stateSetter({ pics: pics, posts: posts });
-	                    //that.setState({pics: pics, posts: posts})
-	                  });
+	                  that.stateSetter({ pics: pics, posts: posts, loading: false });
+	                  //that.setState({pics: pics, posts: posts})
 	                });
 	              });
 	            });
 	          });
 	        });
 	      });
+	      // })
 
 	      return true;
 	    }
@@ -27220,7 +27220,7 @@
 	          null,
 	          'Sunshine Nights'
 	        ),
-	        _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics })
+	        _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics, loading: this.state.loading })
 	      );
 	    }
 	  }]);
@@ -27288,7 +27288,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props, context));
 
-	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "news", loading: true };
+	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "shows", loading: true };
 	    return _this;
 	  }
 
@@ -27297,6 +27297,13 @@
 	    value: function htmlify(string) {
 
 	      return { __html: string };
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      if (!this.props.loading) {
+	        this.setState({ loading: false });
+	      }
 	    }
 	  }, {
 	    key: 'getContent',
@@ -27348,37 +27355,17 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
 
 	      var content = void 0;
 	      if (this.state.loading) {
-	        content = _react2.default.createElement(
-	          'div',
-	          { className: 'overlay', onClick: function onClick() {
-	              return _this2.toggleLoading();
-	            } },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'overlayX' },
-	            'x'
-	          ),
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'overlayLink', href: 'https://sunshinenights.bandcamp.com/album/a-brooklyn-biograghy?action=buy&from=embed', target: '_blank' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'overlayText' },
-	              'Click here to purchase Sunshine\'s new record A Brooklyn Biography.'
-	            )
-	          )
-	        );
-	      } else if (this.props.posts.length < 1) {
-
 	        content = _react2.default.createElement(
 	          'p',
 	          null,
 	          'loading...'
 	        );
+	        // } else if (this.props.posts.length < 1){
+
+	        // 	content = <p>loading...</p>
 	      } else {
 	        content = this.getContent();
 	      }
@@ -27392,11 +27379,6 @@
 	          _react2.default.createElement(
 	            'ul',
 	            { id: 'nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'top_nav', id: 'news', onClick: this.nav.bind(this) },
-	              'news'
-	            ),
 	            _react2.default.createElement(
 	              'li',
 	              { className: 'top_nav', id: 'shows', onClick: this.nav.bind(this) },
