@@ -27126,7 +27126,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
 
-	    _this.state = { pics: [], posts: [], loading: true };
+	    _this.state = { pics: [], posts: [], loading: true, closedOverlay: false };
 	    return _this;
 	  }
 
@@ -27192,26 +27192,58 @@
 	    value: function stateSetter(obj) {
 	      this.setState(obj);
 	    }
-	    //  toggleLoading(){
-	    //  	if(this.state.loading){
-	    //  		this.setState({loading: false})
-	    //  	}
-	    //  }
-	    // render() {
-
-	    // 	let content;
-	    // 	if(this.state.loading){
-	    // 		content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
-	    // 	} else if (this.state.posts.length < 1){
-	    // 		content = <p>loading...</p>
-	    // 	} else {
-	    // 		content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
-	    // 	}
-
+	  }, {
+	    key: 'toggleLoading',
+	    value: function toggleLoading() {
+	      if (this.state.loading) {
+	        this.setState({ loading: false });
+	      }
+	    }
+	  }, {
+	    key: 'closeOverlay',
+	    value: function closeOverlay() {
+	      this.setState({ closedOverlay: true });
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      //console.log(this)
+	      var _this2 = this;
+
+	      var content = void 0;
+	      if (!this.state.closedOverlay) {
+	        content = _react2.default.createElement(
+	          'div',
+	          { className: 'overlay', onClick: function onClick() {
+	              return _this2.closeOverlay();
+	            } },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'overlayX' },
+	            'x'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'overlayText' },
+	            'Sunshine Nights\' 4th studio album ',
+	            _react2.default.createElement(
+	              'span',
+	              { style: { fontWeight: "bold", fontStyle: "italic" } },
+	              'If We Stick Around'
+	            ),
+	            ' comes out on March 29th! We\'ll be playing a record release show that night at The Bitter End in New York City at 8:30.'
+	          )
+	        );
+	      } else if (this.state.loading) {
+	        content = _react2.default.createElement(
+	          'p',
+	          { className: 'app' },
+	          'loading...'
+	        );
+	      } else {
+	        content = _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics });
+	      }
+	      // render() {
+	      console.log(this);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27220,7 +27252,7 @@
 	          null,
 	          'Sunshine Nights'
 	        ),
-	        _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics, loading: this.state.loading })
+	        content
 	      );
 	    }
 	  }]);
@@ -27288,7 +27320,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props, context));
 
-	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "shows", loading: true };
+	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "shows", loading: false };
 	    return _this;
 	  }
 
@@ -27360,7 +27392,7 @@
 	      if (this.state.loading) {
 	        content = _react2.default.createElement(
 	          'p',
-	          null,
+	          { className: 'body' },
 	          'loading...'
 	        );
 	        // } else if (this.props.posts.length < 1){

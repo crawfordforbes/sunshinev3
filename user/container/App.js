@@ -10,7 +10,7 @@ import $ from 'jquery'
 class App extends Component {
 	constructor(props, context) {
     super(props, context)
-    this.state = {pics: [], posts: [], loading: true}
+    this.state = {pics: [], posts: [], loading: true, closedOverlay: false}
   }
 	componentDidMount(){
     let pics;
@@ -70,27 +70,30 @@ class App extends Component {
   stateSetter(obj){
     this.setState(obj)
   }
- //  toggleLoading(){
- //  	if(this.state.loading){
- //  		this.setState({loading: false})
- //  	}
- //  }
-	// render() {
-
-	// 	let content;
-	// 	if(this.state.loading){
-	// 		content = <div className="overlay" onClick={()=>this.toggleLoading()}><p className="overlayX">x</p><a className="overlayLink" href="#" target="_blank"><div className="overlayText">Click here to preorder Sunshine's new record A Brooklyn Biography.</div></a></div>
-	// 	} else if (this.state.posts.length < 1){
-	// 		content = <p>loading...</p>
-	// 	} else {
-	// 		content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
-	// 	}
+  toggleLoading(){
+  	if(this.state.loading){
+  		this.setState({loading: false})
+  	}
+  }
+  closeOverlay(){
+  	this.setState({closedOverlay: true})
+  }
 	render() {
-		//console.log(this)
+
+		let content;
+		if(!this.state.closedOverlay){
+			content = <div className="overlay" onClick={()=>this.closeOverlay()}><p className="overlayX">x</p><div className="overlayText">Sunshine Nights' 4th studio album <span style={{fontWeight: "bold", fontStyle: "italic"}}>If We Stick Around</span> comes out on March 29th! We'll be playing a record release show that night at The Bitter End in New York City at 8:30.</div></div>
+		} else if (this.state.loading){
+			content = <p className="app">loading...</p>
+		} else {
+			content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+		}
+	// render() {
+		console.log(this)
 		return (
 			<div>
 			<h1>Sunshine Nights</h1>
-				<Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics} loading={this.state.loading}/>
+				{content}
 			</div>)
 	}
 }

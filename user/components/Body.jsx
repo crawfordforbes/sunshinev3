@@ -6,7 +6,7 @@ import $ from 'jquery'
 class Body extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = {pics: this.props.pics, posts: this.props.posts, section: "shows", loading: true}
+    this.state = {pics: this.props.pics, posts: this.props.posts, section: "shows", loading: false}
   }
   htmlify(string){
 
@@ -62,7 +62,7 @@ class Body extends Component {
 
 		let content;
 		if(this.state.loading){
-			content = <p>loading...</p>
+			content = <p className="body">loading...</p>
 		// } else if (this.props.posts.length < 1){
 			
 		// 	content = <p>loading...</p>
