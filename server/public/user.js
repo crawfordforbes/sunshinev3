@@ -27213,7 +27213,7 @@
 	      if (!this.state.closedOverlay) {
 	        content = _react2.default.createElement(
 	          'div',
-	          { className: 'overlay', onClick: function onClick() {
+	          { className: 'overlay', style: { height: "725px" }, onClick: function onClick() {
 	              return _this2.closeOverlay();
 	            } },
 	          _react2.default.createElement(
@@ -27230,7 +27230,13 @@
 	              { style: { fontWeight: "bold", fontStyle: "italic" } },
 	              'If We Stick Around'
 	            ),
-	            ' comes out on March 29th! We\'ll be playing a record release show that night at The Bitter End in New York City at 8:30.'
+	            ' comes out on March 29th! We\'ll be playing a record release show that night at The Bitter End in New York City at 8:30.',
+	            _react2.default.createElement(
+	              'div',
+	              { style: { border: "black 2px solid", borderRadius: "3px", margin: "50px auto 50px", width: "150px", textAlign: "center", padding: "5px", cursor: "pointer" } },
+	              'Enter site'
+	            ),
+	            _react2.default.createElement('img', { src: './assets/images/IWSAOverlay.png', style: { width: "100%", margin: "0 auto 30px", maxWidth: "500px", display: "block" } })
 	          )
 	        );
 	      } else if (this.state.loading) {

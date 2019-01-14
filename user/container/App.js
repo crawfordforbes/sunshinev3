@@ -82,7 +82,10 @@ class App extends Component {
 
 		let content;
 		if(!this.state.closedOverlay){
-			content = <div className="overlay" onClick={()=>this.closeOverlay()}><p className="overlayX">x</p><div className="overlayText">Sunshine Nights' 4th studio album <span style={{fontWeight: "bold", fontStyle: "italic"}}>If We Stick Around</span> comes out on March 29th! We'll be playing a record release show that night at The Bitter End in New York City at 8:30.</div></div>
+			content = <div className="overlay" style={{height: "725px"}} onClick={()=>this.closeOverlay()}><p className="overlayX">x</p><div className="overlayText">Sunshine Nights' 4th studio album <span style={{fontWeight: "bold", fontStyle: "italic"}}>If We Stick Around</span> comes out on March 29th! We'll be playing a record release show that night at The Bitter End in New York City at 8:30.
+			<div style={{border:"black 2px solid", borderRadius:"3px", margin:"50px auto 50px", width: "150px", textAlign: "center", padding: "5px", cursor: "pointer"}}>Enter site</div>
+			<img src= "./assets/images/IWSAOverlay.png" style={{width:"100%", margin: "0 auto 30px", maxWidth: "500px", display: "block"}}/>
+			</div></div>
 		} else if (this.state.loading){
 			content = <p className="app">loading...</p>
 		} else {
