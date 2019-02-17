@@ -133,7 +133,7 @@ p {
 	#songkick {
 		position: absolute;
 		left: 0;
-		top: 460px;
+		top: 160px;
 		
 	}
 	.playerWrapper {
@@ -175,7 +175,12 @@ p {
 	}
 
 }
-
+@media(min-width:801px){
+#follow_links .flex-wrapper a img {
+	
+    margin-bottom: 15px;
+	}
+}
 
 @media  (max-width: 800px){
 	#songkick {
@@ -186,10 +191,10 @@ p {
 	#songkickBorder {
 	border: none;
 	
-}
+	}
 	.playerWrapper {
 		height: 96px;
-		width: 200px;   
+		width: 95%;   
 	}
 	.content {
     display: block;
@@ -198,10 +203,25 @@ p {
     margin: 5px auto 15px;
 	}
 	#follow_links {
-		display: none;
+		display: block;
+	}
+	#follow_links .flex-wrapper {
+		display: flex;
+    justify-content: space-around;
+    align-items: end;
+    max-width:400px;
+    margin:auto;
+    flex-wrap: wrap;
+	}
+	#follow_links .flex-wrapper a {
+		margin-right:20px;
+    margin-bottom: 15px;
+	}
+	#follow_links img {
+		margin-left: 0;
 	}
 	#follow_links2 {
-		display: initial;
+		display: none;
 		position: absolute;
 		right: 0;
 		top: 25px;
@@ -214,10 +234,10 @@ p {
 		margin-right: 15px;
 	}
 	#email_div {
-		display: none;
+		display: block;
 	}
 	#email_div2 {
-		display: initial;
+		display: none;
 		position: absolute;
 		top: 70px;
 		right: 0;
@@ -358,6 +378,9 @@ h1 {
 #follow_links, {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+#follow_links .spofity-follow {
+	margin: 10px 5px;
 }
 
 #follow_links img, #follow_links2 img {
