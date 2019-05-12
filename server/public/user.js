@@ -27230,7 +27230,7 @@
 	              { style: { fontWeight: "bold", fontStyle: "italic" } },
 	              'If We Stick Around'
 	            ),
-	            ' comes out on March 29th! We\'ll be playing a record release show that night at The Bitter End in New York City at 9:30.',
+	            ' is out now!',
 	            _react2.default.createElement(
 	              'div',
 	              { style: { border: "black 2px solid", borderRadius: "3px", margin: "50px auto 50px", width: "150px", textAlign: "center", padding: "5px", cursor: "pointer" } },
