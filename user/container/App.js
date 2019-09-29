@@ -10,7 +10,7 @@ import $ from 'jquery'
 class App extends Component {
 	constructor(props, context) {
     super(props, context)
-    this.state = {pics: [], posts: [], loading: true, closedOverlay: false}
+    this.state = {pics: [], posts: [], loading: true, closedOverlay: true}
   }
 	componentDidMount(){
     let pics;

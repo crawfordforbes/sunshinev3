@@ -27126,7 +27126,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
 
-	    _this.state = { pics: [], posts: [], loading: true, closedOverlay: false };
+	    _this.state = { pics: [], posts: [], loading: true, closedOverlay: true };
 	    return _this;
 	  }
 
