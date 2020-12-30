@@ -27326,7 +27326,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props, context));
 
-	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "shows", loading: false };
+	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "about", loading: false };
 	    return _this;
 	  }
 
@@ -27376,11 +27376,6 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'postWrapper' },
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'About'
-	          ),
 	          _react2.default.createElement(
 	            'p',
 	            null,

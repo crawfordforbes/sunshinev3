@@ -6,7 +6,7 @@ import $ from 'jquery'
 class Body extends Component {
   constructor(props, context) {
     super(props, context)
-    this.state = {pics: this.props.pics, posts: this.props.posts, section: "shows", loading: false}
+    this.state = {pics: this.props.pics, posts: this.props.posts, section: "about", loading: false}
   }
   htmlify(string){
 
@@ -45,7 +45,6 @@ class Body extends Component {
         pics={this.props.pics} />
     } else {
     	return <div className="postWrapper">
-    	<h3>About</h3>
     	<p>We are a band and songwriting partnership between Amy Priya and Stephen Sunshine. We perform live both as a duo and as a larger band consisting of a variety of players: drum set, a second guitar, mandolin,
 			trumpet, saxophone, fiddle, lap steel, percussion or/and a third vocalist.</p>
 			<p>We perform in NYC regularly with a great community of fellow artists. We also tour a good part of the year in Quebec, America’s South & East Coast as well as Western Europe. <strong>We are always open to expand our tour stops, so please reach out if you want us to come play your town.</strong></p>
