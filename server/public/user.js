@@ -27126,78 +27126,52 @@
 
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
 
-	    _this.state = { pics: [], posts: [], loading: true, closedOverlay: true };
+	    _this.state = { posts: [], loading: true, closedOverlay: true };
 	    return _this;
 	  }
 
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var pics = void 0;
 	      var posts = [];
 	      var that = this;
-	      // $.get("http://sunshinenights.com/news", function(news){
-	      //   news.forEach(function(post){
-	      //     posts.push(post)
-	      //     that.stateSetter({posts: posts})
-	      //   })
 
 	      _jquery2.default.get("http://sunshinenights.com/shows", function (shows) {
 	        shows.forEach(function (post) {
 	          posts.push(post);
-	          that.stateSetter({ posts: posts });
 	        });
 
 	        _jquery2.default.get("http://sunshinenights.com/press", function (press) {
 	          press.forEach(function (post) {
 	            posts.push(post);
-	            that.stateSetter({ posts: posts });
 	          });
 
 	          _jquery2.default.get("http://sunshinenights.com/videos", function (videos) {
 	            videos.forEach(function (post) {
 	              posts.push(post);
-	              that.stateSetter({ posts: posts });
 	            });
 
 	            _jquery2.default.get("http://sunshinenights.com/contact", function (contact) {
 	              contact.forEach(function (post) {
 	                posts.push(post);
-	                that.stateSetter({ posts: posts });
 	              });
 
 	              _jquery2.default.get("http://sunshinenights.com/store", function (store) {
 	                store.forEach(function (post) {
 	                  posts.push(post);
-	                  that.stateSetter({ posts: posts });
-	                });
-
-	                _jquery2.default.get("http://sunshinenights.com/pics", function (data) {
-	                  pics = data;
-
-	                  that.stateSetter({ pics: pics, posts: posts, loading: false });
-	                  //that.setState({pics: pics, posts: posts})
+	                  that.stateSetter({ posts: posts, loading: false });
 	                });
 	              });
 	            });
 	          });
 	        });
 	      });
-	      // })
-
 	      return true;
 	    }
 	  }, {
 	    key: 'stateSetter',
 	    value: function stateSetter(obj) {
 	      this.setState(obj);
-	    }
-	  }, {
-	    key: 'toggleLoading',
-	    value: function toggleLoading() {
-	      if (this.state.loading) {
-	        this.setState({ loading: false });
-	      }
 	    }
 	  }, {
 	    key: 'closeOverlay',
@@ -27246,10 +27220,8 @@
 	          'loading...'
 	        );
 	      } else {
-	        content = _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts, pics: this.state.pics });
+	        content = _react2.default.createElement(_Body2.default, { data: this.props.data, actions: this.props.actions, posts: this.state.posts });
 	      }
-	      // render() {
-	      console.log(this);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27326,40 +27298,28 @@
 
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, props, context));
 
-	    _this.state = { pics: _this.props.pics, posts: _this.props.posts, section: "about", loading: false };
+	    _this.state = { posts: _this.props.posts, section: "about" };
 	    return _this;
 	  }
 
 	  _createClass(Body, [{
 	    key: 'htmlify',
 	    value: function htmlify(string) {
-
 	      return { __html: string };
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      if (!this.props.loading) {
-	        this.setState({ loading: false });
-	      }
 	    }
 	  }, {
 	    key: 'getContent',
 	    value: function getContent() {
-
-	      //return {__html: this.state.posts[0].title}
 	      var posts = this.props.posts;
-	      var pics = this.props.pics;
 	      var that = this;
 	      var content = [];
-	      if (this.state.section !== "pics" && this.state.section !== "about") {
 
+	      if (this.state.section !== "about") {
 	        content = posts.filter(function (post) {
 	          return post.section === that.state.section;
 	        });
 
 	        var html = content.map(function (post) {
-
 	          return _react2.default.createElement(
 	            'div',
 	            { key: post.id, className: 'postWrapper' },
@@ -27369,9 +27329,6 @@
 	        });
 
 	        return html;
-	      } else if (this.state.section === "pics") {
-	        return _react2.default.createElement(_Carousel2.default, {
-	          pics: this.props.pics });
 	      } else {
 	        return _react2.default.createElement(
 	          'div',
@@ -27412,36 +27369,12 @@
 	  }, {
 	    key: 'nav',
 	    value: function nav(e) {
-	      if (this.state.loading) {
-	        this.setState({ section: e.target.id, loading: false });
-	      } else {
-	        this.setState({ section: e.target.id, loading: false });
-	      }
-	    }
-	  }, {
-	    key: 'toggleLoading',
-	    value: function toggleLoading() {
-	      if (this.state.loading) {
-	        this.setState({ loading: false });
-	      }
+	      this.setState({ section: e.target.id });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-
-	      var content = void 0;
-	      if (this.state.loading) {
-	        content = _react2.default.createElement(
-	          'p',
-	          { className: 'body' },
-	          'loading...'
-	        );
-	        // } else if (this.props.posts.length < 1){
-
-	        // 	content = <p>loading...</p>
-	      } else {
-	        content = this.getContent();
-	      }
+	      var content = this.getContent();
 
 	      return _react2.default.createElement(
 	        'div',
@@ -27461,11 +27394,6 @@
 	              'li',
 	              { className: 'top_nav', id: 'about', onClick: this.nav.bind(this) },
 	              'about'
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'top_nav', id: 'pics', onClick: this.nav.bind(this) },
-	              'pics'
 	            ),
 	            _react2.default.createElement(
 	              'li',
@@ -27496,11 +27424,6 @@
 
 	  return Body;
 	}(_react.Component);
-
-	// Body.propTypes = {
-	//   data: PropTypes.object.isRequired,
-	//   actions: PropTypes.object.isRequired
-	// }
 
 	exports.default = Body;
 

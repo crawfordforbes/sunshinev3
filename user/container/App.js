@@ -10,76 +10,55 @@ import $ from 'jquery'
 class App extends Component {
 	constructor(props, context) {
     super(props, context)
-    this.state = {pics: [], posts: [], loading: true, closedOverlay: true}
+    this.state = {posts: [], loading: true, closedOverlay: true}
   }
+
 	componentDidMount(){
-    let pics;
     let posts = [];
-    let that = this
-    // $.get("http://sunshinenights.com/news", function(news){
-    //   news.forEach(function(post){
-    //     posts.push(post)
-    //     that.stateSetter({posts: posts})
-    //   })
+    let that = this 
+
+    $.get("http://sunshinenights.com/shows", function(shows){
+      shows.forEach(function(post){
+        posts.push(post)
+      })
       
-      $.get("http://sunshinenights.com/shows", function(shows){
-        shows.forEach(function(post){
+      $.get("http://sunshinenights.com/press", function(press){
+        press.forEach(function(post){
           posts.push(post)
-          that.stateSetter({posts: posts})
         })
         
-        $.get("http://sunshinenights.com/press", function(press){
-          press.forEach(function(post){
+        $.get("http://sunshinenights.com/videos", function(videos){
+          videos.forEach(function(post){
             posts.push(post)
-            that.stateSetter({posts: posts})
           })
           
-          $.get("http://sunshinenights.com/videos", function(videos){
-            videos.forEach(function(post){
+          $.get("http://sunshinenights.com/contact", function(contact){
+            contact.forEach(function(post){
               posts.push(post)
-              that.stateSetter({posts: posts})
             })
             
-            $.get("http://sunshinenights.com/contact", function(contact){
-              contact.forEach(function(post){
-                posts.push(post)
-                that.stateSetter({posts: posts})
-              })
-              
-              $.get("http://sunshinenights.com/store", function(store){
-              store.forEach(function(post){
-                posts.push(post)
-                that.stateSetter({posts: posts})
-              })
-              
-	              $.get("http://sunshinenights.com/pics", function(data){
-	                pics = data
-	                
-	                that.stateSetter({pics: pics, posts: posts, loading: false})
-	                //that.setState({pics: pics, posts: posts})
-	              })
-	            })
+            $.get("http://sunshinenights.com/store", function(store){
+	            store.forEach(function(post){
+	              posts.push(post)
+	              that.stateSetter({posts: posts, loading: false})
+	            })              
             })
           })
         })
       })
-    // })
-
+    })
     return true
   }
+
   stateSetter(obj){
     this.setState(obj)
   }
-  toggleLoading(){
-  	if(this.state.loading){
-  		this.setState({loading: false})
-  	}
-  }
+
   closeOverlay(){
   	this.setState({closedOverlay: true})
   }
-	render() {
 
+	render() {
 		let content;
 		if(!this.state.closedOverlay){
 			content = <div className="overlay" style={{height: "725px"}} onClick={()=>this.closeOverlay()}><p className="overlayX">x</p><div className="overlayText">Sunshine Nights' 4th studio album <span style={{fontWeight: "bold", fontStyle: "italic"}}>If We Stick Around</span> is out now!
@@ -89,10 +68,8 @@ class App extends Component {
 		} else if (this.state.loading){
 			content = <p className="app">loading...</p>
 		} else {
-			content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts} pics={this.state.pics}/>
+			content = <Body data={this.props.data} actions={this.props.actions} posts={this.state.posts}/>
 		}
-	// render() {
-		console.log(this)
 		return (
 			<div>
 			<h1>Sunshine Nights</h1>
