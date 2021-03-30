@@ -43,6 +43,11 @@ get '/confirmation.html' do
 	puts '/confirmation.html'
 	send_file File.join(settings.public_folder, 'confirmation.html')
 end
+
+get '/confirmation.html' do
+	puts '/confirmation.html'
+	send_file File.join(settings.public_folder, 'confirmation.html')
+end
 #respond to ajax for carousel
 get '/pics' do
 	headers 'Access-Control-Allow-Origin' => '*'
